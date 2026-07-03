@@ -5,6 +5,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
+
+
 import sys
 import os
 sys.path.append(os.getcwd())
@@ -12,6 +14,8 @@ sys.path.append(os.getcwd())
 from app.core.config import settings
 from app.db.base import Base
 from app.models.user import User  # noqa
+from app.models.driver import Driver  # noqa
+from app.models.rider import Rider  # noqa
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
