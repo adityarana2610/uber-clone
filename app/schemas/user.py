@@ -20,3 +20,12 @@ class UserResponse(BaseModel):
     full_name: str
     phone_number: str
     role: UserRole
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
