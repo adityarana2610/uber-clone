@@ -16,6 +16,7 @@ from app.db.base import Base
 from app.models.user import User  # noqa
 from app.models.driver import Driver  # noqa
 from app.models.rider import Rider  # noqa
+from app.models.ride import Ride  # noqa
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
