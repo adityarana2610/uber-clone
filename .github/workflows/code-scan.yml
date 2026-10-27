@@ -7,12 +7,12 @@ on:
 
 jobs:
   security-audit:
-    uses: adityarana2610/Internal-Audit-App/.github/workflows/code-scan.yml@test-ai-scanner
+    uses: menonkrishna57/Internal-Audit-App/.github/workflows/code-scan.yml@master
     with:
       scan_python: true
-      scan_javascript: false       # uber-clone is pure Python
+      scan_javascript: false       
       run_tests: false
-      python_dir: "app"            # your Python files are inside the app/ folder
-      fail_on_errors: false        # keeps it green while giving AI fixes
+      python_dir: "app"            
+      fail_on_errors: false
     secrets:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY || secrets.INTERNALAUDITAPP }}
