@@ -1,21 +1,19 @@
-name: "Code Scan & AI Fix Suggestions"
+name: Security Audit (SBOM & CBOM)
 
 on:
-  # Triggers automatically as soon as you commit or push:
   push:
-    branches: [main, master]
+    branches: [ "main" ]
   pull_request:
-    branches: [main, master]
-  workflow_dispatch:
+    branches: [ "main" ]
 
 jobs:
   security-audit:
-    uses: menonkrishna57/Internal-Audit-App/.github/workflows/code-scan.yml@master
-    with:
-      scan_python: true
-      scan_javascript: false
-      run_tests: false
-      python_dir: "app"
-      fail_on_errors: false
-    secrets:
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY || secrets.INTERNALAUDITAPP }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Audit-App Security Pipeline
+        uses: menonkrishna57/Audit-App@main
+        with:
+          google-api-key: ${{ secrets.GOOGLE_API_KEY }}
