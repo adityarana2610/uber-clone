@@ -1,0 +1,28 @@
+name: Code Security & Compliance Audit
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch: # Allows manual one-click trigger from GitHub UI
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Audit-App Security Measures (SBOM, CBOM, RCA, CWE)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Target Codebase
+        uses: actions/checkout@v4
+
+      - name: Run Complete Security Audit
+        uses: menonkrishna57/Audit-App@main
+        with:
+          target-path: "."
+          google-api-key: ${{ secrets.GOOGLE_API_KEY }}  # optional (for AI RAG)
+          jina-api-key: ${{ secrets.JINA_API_KEY }}      # optional (for Jina AI)
+          fail-on-critical: "false"                       # change to "true" to block PRs on critical bugs
